@@ -124,7 +124,6 @@ class Game extends React.Component {
           >
             {desc}
           </button>
-          )
         </li>
       )
     })
