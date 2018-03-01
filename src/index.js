@@ -60,7 +60,9 @@ class Game extends React.Component {
 
   handleClick(i) {
     const history = this.state.history.slice(0, this.state.stepNumber + 1)
+    console.log('history', history)
     const current = history[history.length - 1]
+    console.log('current', current)
     const squares = current.squares.slice()
     if (calculateWinner(squares) || squares[i]) {
       return
@@ -91,6 +93,7 @@ class Game extends React.Component {
     const winner = calculateWinner(current.squares)
 
     const moves = history.map((step, move) => {
+      console.log('MOVE', move, 'STEP', step)
       const row =
         step.selectedBoxIndex < 4
           ? 1
@@ -116,7 +119,9 @@ class Game extends React.Component {
         : `Go to game start`
       return (
         <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+          <button className="selected-item" onClick={() => this.jumpTo(move)}>
+            {desc}
+          </button>
         </li>
       )
     })
